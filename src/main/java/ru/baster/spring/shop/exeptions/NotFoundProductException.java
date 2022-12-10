@@ -1,4 +1,4 @@
-package ru.geekbrains.summer.market.utils;
+package ru.baster.spring.shop.exeptions;
 
-public class ResourceNotFoundException extends RuntimeException {
+public class NotFoundProductException extends RuntimeException {
 }

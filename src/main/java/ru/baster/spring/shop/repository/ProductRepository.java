@@ -2,7 +2,8 @@ package ru.baster.spring.shop.repository;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
-import ru.baster.spring.shop.entities.Product;
+import ru.baster.spring.shop.exeptions.NotFoundProductException;
+import ru.baster.spring.shop.models.Product;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,11 +28,21 @@ public class ProductRepository {
                 new Product(10L, "Watermelon", 100)
         ));
     }
-    public List<Product> getLines(){
+    public List<Product> getAllLines(){
         return Collections.unmodifiableList(lines);
     }
     public void add(Product product) {
+        product.setId(lines.stream().mapToLong(Product::getId).max().getAsLong() + 1L);
         lines.add(product);
+    }
+
+    public Product findById(Long id) {
+        for (Product p : lines) {
+            if (p.getId().equals(id)) {
+                return p;
+            }
+        }
+        throw new NotFoundProductException();
     }
 }
 

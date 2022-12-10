@@ -1,10 +1,10 @@
-package ru.baster.spring.shop.entities;
+package ru.baster.spring.shop.models;
 
 
 public class Product {
     private Long id;
     private String title;
-    private Integer price;
+    private int price;
 
     public Product() {}
 
