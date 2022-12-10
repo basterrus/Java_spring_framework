@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Продукты</title>
+</head>
+<body>
+    <thead>
+        <td>id</td>
+        <td>title</td>
+    </thead>
+    <tbody>
+    <tr th:each="it : ${lines}">
+        <td>
+            <span th:text="${it.id}"></span>
+        </td>
+        <td>
+            <span th:text="${it.title}"></span>
+        </td>
+    </tr>
+    </tbody>
+
+</body>
+</html>
