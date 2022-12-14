@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.baster.spring.shop.models.Product;
 import ru.baster.spring.shop.service.ProductService;
-
-import java.util.List;
 
 @Controller
 public class ProductController {
@@ -21,11 +18,11 @@ public class ProductController {
     @GetMapping("/products")
     public String showMainPage(Model model) {
         model.addAttribute("items", productService.findAll());
-        return "products";
+        return "product/products";
     }
     @GetMapping("/products/add")
     public String showAddProductForm() {
-        return "add_form";
+        return "product/add_form";
     }
     @PostMapping("/products/add")
     public String saveNewProduct(@RequestParam String title, @RequestParam int price) {
@@ -35,7 +32,7 @@ public class ProductController {
     @GetMapping ("/products/{id}")
     public String showProductInfo(Model model, @PathVariable Long id) {
         model.addAttribute("product", productService.findById(id));
-        return "product_info";
+        return "product/product_info";
     }
 
 }
