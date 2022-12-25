@@ -1,13 +1,18 @@
-package ru.baster.spring.shop.models;
+package ru.baster.spring.lesson5.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import org.hibernate.annotations.Table;
+import org.springframework.data.annotation.Id;
+
 
 @Entity
 @Table(name = "products")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "title")
@@ -19,8 +24,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String title, Integer price) {
-        this.id = id;
+    public Product(String title, int price) {
         this.title = title;
         this.price = price;
     }
@@ -41,13 +45,16 @@ public class Product {
         this.title = title;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-
+    @Override
+    public String toString() {
+        return id + ". " + title + ' ' + price + "р.";
+    }
 }

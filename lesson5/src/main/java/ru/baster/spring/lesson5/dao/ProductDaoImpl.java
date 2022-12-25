@@ -1,22 +1,24 @@
-package ru.baster.spring.shop.repository;
+package ru.baster.spring.lesson5.dao;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
-import ru.baster.spring.shop.models.Product;
-import ru.baster.spring.shop.utils.SessionFactory;
+import ru.baster.spring.lesson5.models.Product;
+import ru.baster.spring.lesson5.utils.SessionFactoryUtils;
+
 import java.util.List;
 
 @Component
-public class ProductRepository implements ProductInterface {
-    SessionFactory sessionFactory;
+public class ProductDaoImpl implements ProductDao{
 
-    public ProductRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    SessionFactoryUtils sessionFactoryUtils;
+
+    public ProductDaoImpl(SessionFactoryUtils sessionFactoryUtils) {
+        this.sessionFactoryUtils = sessionFactoryUtils;
     }
 
     @Override
     public Product findById(Long id) {
-        try (Session session = (Session) sessionFactory.getSession()){
+        try (Session session = sessionFactoryUtils.getSession()){
             session.beginTransaction();
             Product product =session.get(Product.class, id);
             session.getTransaction().commit();
@@ -26,7 +28,7 @@ public class ProductRepository implements ProductInterface {
 
     @Override
     public List<Product> findAll() {
-        try (Session session = (Session) sessionFactory.getSession()){
+        try (Session session = sessionFactoryUtils.getSession()){
             session.beginTransaction();
             List<Product> products = session.createQuery("from Product").getResultList();
             session.getTransaction().commit();
@@ -35,8 +37,8 @@ public class ProductRepository implements ProductInterface {
     }
 
     @Override
-    public void deleteProductById(Long id) {
-        try (Session session = (Session) sessionFactory.getSession()){
+    public void deleteById(Long id) {
+        try (Session session = sessionFactoryUtils.getSession()){
             session.beginTransaction();
             session.createQuery("delete from Product where id = :id")
                     .setParameter("id", id)
@@ -46,17 +48,12 @@ public class ProductRepository implements ProductInterface {
     }
 
     @Override
-    public Product saveOrUpdate(String title, String price) {
-        try (Session session = (Session) sessionFactory.getSession()){
+    public Product saveOrUpdate(Product product) {
+        try (Session session = sessionFactoryUtils.getSession()){
             session.beginTransaction();
-            session.saveOrUpdate(title, price);
+            session.saveOrUpdate(product);
             session.getTransaction().commit();
-
-            return null;
+            return product;
         }
-
     }
-
 }
-
-
