@@ -1,9 +1,11 @@
-package ru.baster.spring.shop.repository;
+package ru.baster.spring.shop;
 
+import org.springframework.stereotype.Service;
 import ru.baster.spring.shop.models.Product;
 
 import java.util.List;
 
+@Service
 public interface ProductInterface {
     Product findById(Long id);
 

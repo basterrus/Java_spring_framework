@@ -6,9 +6,8 @@ import jakarta.persistence.GenerationType;
 import org.hibernate.annotations.Table;
 import org.springframework.data.annotation.Id;
 
-
 @Entity
-@Table(name = "products")
+@Table(name="product")
 public class Product {
 
     @Id

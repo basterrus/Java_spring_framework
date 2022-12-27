@@ -2,9 +2,8 @@ package ru.baster.spring.shop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.baster.spring.shop.models.Product;
 import ru.baster.spring.shop.models.User;
-import ru.baster.spring.shop.repository.UserRepository;
+import ru.baster.spring.shop.UserRepository;
 
 import java.util.List;
 

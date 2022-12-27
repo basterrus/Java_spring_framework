@@ -9,8 +9,8 @@
 <body>
 <div class="container">
     <h1>Add new product form</h1>
-    <!-- POST [http://localhost:8189/summer/]products/add?title=cola&price=100   -->
-    <form method="post" th:action="@{/products/add}">
+    <!-- POST [http://localhost:8189/summer/]productDaos/add?title=cola&price=100   -->
+    <form method="post" th:action="@{/productDaos/add}">
         <input type="text" name="title">
         <input type="number" name="price">
         <button class="btn btn-primary" type="submit">Create product</button>

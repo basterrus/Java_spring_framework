@@ -1,4 +1,4 @@
-package ru.baster.spring.shop.repository;
+package ru.baster.spring.shop;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;

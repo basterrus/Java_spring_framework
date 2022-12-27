@@ -1,15 +1,15 @@
 package ru.baster.spring.lesson5.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import ru.baster.spring.lesson5.services.ProductService;
 import ru.baster.spring.lesson5.models.Product;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class ProductController {
     private ProductService productService;
 

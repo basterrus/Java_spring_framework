@@ -2,7 +2,7 @@ package ru.baster.spring.shop.service;
 
 import org.springframework.stereotype.Service;
 import ru.baster.spring.shop.models.Product;
-import ru.baster.spring.shop.repository.ProductRepository;
+import ru.baster.spring.shop.ProductRepository;
 
 import java.util.Collections;
 import java.util.List;
