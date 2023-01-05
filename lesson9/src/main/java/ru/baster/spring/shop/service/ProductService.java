@@ -1,44 +1,34 @@
 package ru.baster.spring.shop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.baster.spring.shop.models.Product;
 import ru.baster.spring.shop.repository.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.domain.PageRequest;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ProductService {
-
-    @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public Page<Product> findAll(Specification<Product> spec, Integer numPage, int sizePage){
+        return productRepository.findAll(spec, PageRequest.of(numPage, sizePage));
     }
 
-    public Optional<Product> findById(Long id) {
+    public Optional<Product> findById(Long id){
         return productRepository.findById(id);
     }
 
-    public String saveProduct(String name, int price) {
-        Product product = new Product();
-        product.setName(name);
-        product.setPrice(price);
-        if (product.getPrice() <= 0) {
-            return name;
-        }
-        productRepository.save(product);
-        return name;
+    public Product save(Product product){
+        return productRepository.save(product);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Long id){
         productRepository.deleteById(id);
-    }
-
-    public List<Product>findByMinPrice(int minPrice) {
-        return productRepository.findAllByPriceGreaterThanEqual(minPrice);
     }
 
 
