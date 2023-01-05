@@ -7,6 +7,7 @@
         <module>lesson5</module>
         <module>lesson6</module>
         <module>lesson7</module>
+        <module>lesson8</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -94,6 +95,20 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+
 
 
     </dependencies>
